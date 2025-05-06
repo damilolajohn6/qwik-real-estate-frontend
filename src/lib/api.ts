@@ -3,7 +3,7 @@
 
 export const getAgentProperties = async (token: string, params: Record<string, any> = {}) => {
     const query = new URLSearchParams(params).toString();
-    const res = await fetch(`http://localhost:8000/api/properties/user?${query}`, {
+    const res = await fetch(`https://d793cb89-076c-4f34-bf76-8f2aa45e2c73.us-east-1.cloud.genez.io/api/properties/user?${query}`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -16,7 +16,7 @@ export const getAgentProperties = async (token: string, params: Record<string, a
 };
 
 export const deleteProperty = async (id: string, token: string) => {
-    const res = await fetch(`http://localhost:8000/api/properties/${id}`, {
+    const res = await fetch(`https://d793cb89-076c-4f34-bf76-8f2aa45e2c73.us-east-1.cloud.genez.io/api/properties/${id}`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${token}`,
@@ -28,7 +28,7 @@ export const deleteProperty = async (id: string, token: string) => {
 };
 
 export const getProperty = async (id: string, token: string) => {
-    const res = await fetch(`http://localhost:8000/api/properties/${id}`, {
+    const res = await fetch(`https://d793cb89-076c-4f34-bf76-8f2aa45e2c73.us-east-1.cloud.genez.io/api/properties/${id}`, {
         headers: {
             Authorization: `Bearer ${token || localStorage.getItem("token") || ""}`,
         },
@@ -40,7 +40,7 @@ export const getProperty = async (id: string, token: string) => {
 };
 
 export const getAnalytics = async (token: string) => {
-    const res = await fetch("http://localhost:8000/api/properties/analytics", {
+    const res = await fetch("https://d793cb89-076c-4f34-bf76-8f2aa45e2c73.us-east-1.cloud.genez.io/api/properties/analytics", {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -53,7 +53,7 @@ export const getAnalytics = async (token: string) => {
 
 export const searchProperties = async (params: Record<string, any> = {}) => {
     const query = new URLSearchParams(params).toString();
-    const res = await fetch(`http://localhost:8000/api/properties?${query}`, {
+    const res = await fetch(`https://d793cb89-076c-4f34-bf76-8f2aa45e2c73.us-east-1.cloud.genez.io/api/properties?${query}`, {
         cache: "no-store",
     });
     const data = await res.json();

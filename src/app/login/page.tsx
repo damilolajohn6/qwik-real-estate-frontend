@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Spinner } from "@/components/Spinner"; // Assuming you have a spinner component for loading
+import { Spinner } from "@/components/Spinner"; 
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
