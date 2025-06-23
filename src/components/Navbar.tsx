@@ -185,8 +185,6 @@ export default function Navbar() {
                   </Disclosure.Button>
                 )
               )}
-              {/* Decide if contact info should be in mobile menu - for this example, I'm omitting it to keep mobile menu concise.
-                   You could add it here if needed, perhaps styled differently. */}
             </div>
           </Disclosure.Panel>
         </>

@@ -92,16 +92,16 @@ export default function AgentDashboard() {
       try {
         const token = localStorage.getItem("token");
         if (!token) {
-          setError("Authentication required. Redirecting to login...");
+          setError("Authentication required. Redirecting to agent login...");
           setLoading(false);
-          setTimeout(() => router.push("/login"), 1500);
+          setTimeout(() => router.push("/agent/login"), 1500);
           return;
         }
 
         // Fetch user data for header
         try {
           const userRes = await fetch(
-            "http://localhost:8000/api/auth/profile",
+            "https://qwik-realestate.onrender.com/api/auth/profile",
             {
               headers: { Authorization: `Bearer ${token}` },
             }

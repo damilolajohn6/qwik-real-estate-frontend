@@ -3,6 +3,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
+@import "swiper/css";
+@import "swiper/css/autoplay";
+
 body {
   font-family: 'Inter', sans-serif;
 }

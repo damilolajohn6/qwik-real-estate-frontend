@@ -1,9 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-export const getAgentProperties = async (token: string, params: Record<string, any> = {}) => {
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
+export const getAgentProperties = async (
+    token: string,
+    params: Record<string, any> = {}
+) => {
     const query = new URLSearchParams(params).toString();
-    const res = await fetch(`https://qwik-realestate.onrender.com/api/properties/user?${query}`, {
+    const res = await fetch(`${API_URL}/properties/user?${query}`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
@@ -16,36 +21,39 @@ export const getAgentProperties = async (token: string, params: Record<string, a
 };
 
 export const deleteProperty = async (id: string, token: string) => {
-    const res = await fetch(`https://qwik-realestate.onrender.com/api/properties/${id}`, {
+    const res = await fetch(`${API_URL}/properties/${id}`, {
         method: "DELETE",
         headers: {
             Authorization: `Bearer ${token}`,
         },
     });
+
     const data = await res.json();
     if (!res.ok) throw new Error(data.message || "Failed to delete property.");
     return data;
 };
 
 export const getProperty = async (id: string, token: string) => {
-    const res = await fetch(`https://qwik-realestate.onrender.com/api/properties/${id}`, {
+    const res = await fetch(`${API_URL}/properties/${id}`, {
         headers: {
             Authorization: `Bearer ${token || localStorage.getItem("token") || ""}`,
         },
         cache: "no-store",
     });
+
     const data = await res.json();
     if (!res.ok) throw new Error(data.message || "Failed to fetch property.");
     return data.property;
 };
 
 export const getAnalytics = async (token: string) => {
-    const res = await fetch("hhttps://qwik-realestate.onrender.com/api/properties/analytics", {
+    const res = await fetch(`${API_URL}/properties/analytics`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },
         cache: "no-store",
     });
+
     const data = await res.json();
     if (!res.ok) throw new Error(data.message || "Failed to fetch analytics.");
     return data.analytics;
@@ -53,9 +61,10 @@ export const getAnalytics = async (token: string) => {
 
 export const searchProperties = async (params: Record<string, any> = {}) => {
     const query = new URLSearchParams(params).toString();
-    const res = await fetch(`https://qwik-realestate.onrender.com/api/properties?${query}`, {
+    const res = await fetch(`${API_URL}/properties?${query}`, {
         cache: "no-store",
     });
+
     const data = await res.json();
     if (!res.ok) throw new Error(data.message || "Failed to search properties.");
     return data;
@@ -92,4 +101,10 @@ export interface AnalyticsData {
     sold?: number;
     rented?: number;
     pending?: number;
+}
+export interface SearchResponse {
+    properties: Property[];
+    total: number;
+    page: number;
+    totalPages: number;
 }
