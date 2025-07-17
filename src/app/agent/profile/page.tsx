@@ -50,9 +50,12 @@ export default function Profile() {
           return;
         }
 
-        const res = await fetch("http://localhost:8000/api/auth/profile", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await fetch(
+          "https://qwik-realestate.onrender.com/api/auth/profile",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         const userData = await res.json();
         if (res.ok && userData._id) {
           setUser(userData);

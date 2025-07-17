@@ -90,7 +90,7 @@ export default function AgentListingsActive() {
         // Fetch user data for header
         try {
           const userRes = await fetch(
-            "http://localhost:8000/api/auth/profile",
+            "https://qwik-realestate.onrender.com/api/auth/profile",
             {
               headers: { Authorization: `Bearer ${token}` },
             }
